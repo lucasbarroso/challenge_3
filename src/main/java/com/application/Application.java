@@ -18,6 +18,7 @@ public class Application {
         System.out.println("rodando");
         this.controller.menu();
         int option = sc.nextInt();
+        this.controller.checkOption(option);
 
     }
 }
