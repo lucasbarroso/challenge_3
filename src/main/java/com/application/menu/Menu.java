@@ -1,7 +1,7 @@
 package main.java.com.application.menu;
 
 public class Menu {
-    public static void menu() {
+    public static void showMenu() {
         System.out.println("=== MENU ===");
         System.out.println("1 - List products");
         System.out.println("2 - Find product by id");
