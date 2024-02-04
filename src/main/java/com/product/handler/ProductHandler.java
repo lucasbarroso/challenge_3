@@ -13,22 +13,22 @@ public class ProductHandler {
     }
 
     public void list() {
-        System.out.println("lista de produtos");
+        System.out.println("1- Listando produtos\n");
     }
 
     public void findById(int id) {
-        System.out.println("buscar id");
+        System.out.println("2- Buscando produto\n");
     }
 
     public void create(String name, String description, double value) {
-        System.out.println("criando produto");
+        System.out.println("3- Criando produto\n");
     }
 
     public void update(int id, String attribute, String value) {
-        System.out.println("atualizando");
+        System.out.println("4- Atualizando produto\n");
     }
 
     public void delete(int id) {
-        System.out.println("deletando");
+        System.out.println("5- Deletando produto\n");
     }
 }
