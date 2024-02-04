@@ -1,7 +1,9 @@
 package main.java.com.application;
 
 import main.java.com.controller.Controller;
+import main.java.com.application.menu.Menu;
 import java.util.Scanner;
+
 
 public class Application {
 
@@ -11,12 +13,11 @@ public class Application {
 
     public Application() {
         this.controller = new Controller();
-
     }
 
     public void run() {
         System.out.println("rodando");
-        this.controller.menu();
+        Menu.menu();
         int option = sc.nextInt();
         this.controller.checkOption(option);
 
