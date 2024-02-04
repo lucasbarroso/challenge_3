@@ -17,9 +17,9 @@ public class Application {
 
     public void run() {
         System.out.println("rodando");
-        Menu.showMenu();
-        int option = sc.nextInt();
-        this.controller.checkOption(option);
+        Menu.showMenu(); //EXIBE OPÇÕES DO MENU
+        int option = sc.nextInt(); //COLETA OPÇÃO DIGITADA PELO USUÁRIO
+        this.controller.checkOption(option); //ENVIA PRA CLASSE CONTROLLER EXECUTAR A OPÇÃO SELECIONADA
 
     }
 }
