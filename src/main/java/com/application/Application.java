@@ -1,8 +1,11 @@
 package main.java.com.application;
 
 import main.java.com.controller.Controller;
+import java.util.Scanner;
 
 public class Application {
+
+    Scanner sc = new Scanner(System.in);
 
     final private Controller controller;
 
@@ -13,8 +16,8 @@ public class Application {
 
     public void run() {
         System.out.println("rodando");
-        this.controller.options();
-
+        this.controller.menu();
+        int option = sc.nextInt();
 
     }
 }
