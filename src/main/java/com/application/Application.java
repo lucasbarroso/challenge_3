@@ -13,7 +13,7 @@ public class Application {
 
     public void run() {
         System.out.println("rodando");
-        this.controller.test();
+        this.controller.options();
 
 
     }
