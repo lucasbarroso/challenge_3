@@ -5,7 +5,35 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class ProductRepository extends Repository {
+    //todo: fazer um metodo findAll
+    
+    public List<Product> findAll() {
 
+        try {
+            final Connection connection = getConnection();
+
+            final String sql = "SELECT * FROM product";
+            final PreparedStatement statement = connection.prepareStatement(sql);
+            
+            final ResultSet resultSet = statement.executeQuery();
+
+            final List<Product> products = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Product product = new Product();
+                product.setId(resultSet.getInt("id"));
+                product.setName(resultSet.getString("name"));
+                product.setValue(resultSet.getLong("value"));
+                product.setDescription(resultSet.getString("description"));
+                products.add(product);
+            }
+            return products;
+
+        } catch (Exception e) { // todo: tratar a exceção corretamente
+            throw new RuntimeException(e);
+        }
+
+    }
     // Método de busca por id: **DUVIDA:  findById ou findByName?
     public List<Product> findById(final int id) {
 

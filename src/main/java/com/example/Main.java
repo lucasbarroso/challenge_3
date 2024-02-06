@@ -14,7 +14,7 @@ public class Main {
         
         // Repository conn= new Repository();
         // conn.getConnection();
-        // System.out.println(productOperation.findById(2));
+        System.out.println(productOperation.findAll());
         
     }
 }
