@@ -10,8 +10,7 @@ public class Product { //classe só para testar o crude, apagar após os testes
     public Product() {
     }
 
-    public Product(int id, String name, String description, double value) {
-        this.id = id;
+    public Product(String name, String description, double value) {
         this.name = name;
         this.description = description;
         this.value = value;
