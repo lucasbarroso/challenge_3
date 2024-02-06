@@ -3,10 +3,9 @@ package com.example.repository;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
-
 public class ProductRepository extends Repository {
-    //todo: fazer um metodo findAll
-    
+    // todo: fazer um metodo findAll
+
     public List<Product> findAll() {
 
         try {
@@ -14,7 +13,7 @@ public class ProductRepository extends Repository {
 
             final String sql = "SELECT * FROM product";
             final PreparedStatement statement = connection.prepareStatement(sql);
-            
+
             final ResultSet resultSet = statement.executeQuery();
 
             final List<Product> products = new ArrayList<>();
@@ -34,7 +33,8 @@ public class ProductRepository extends Repository {
         }
 
     }
-    // Método de busca por id: **DUVIDA:  findById ou findByName?
+
+    // Método de busca por id: **DUVIDA: findById ou findByName?
     public List<Product> findById(final int id) {
 
         try {
@@ -62,7 +62,8 @@ public class ProductRepository extends Repository {
         }
 
     }
-    //Salva um novo produto no banco de dados
+
+    // Salva um novo produto no banco de dados
     public void save(Product product) {
         try {
             final Connection connection = getConnection();
@@ -78,5 +79,21 @@ public class ProductRepository extends Repository {
 
         }
 
+    }
+
+    public void deleteById(final int id) {
+        try {
+            final Connection connection = getConnection();
+            final String sql = "DELETE FROM product WHERE id = ?"; // joao sem acento não pega no ilike
+            final PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+          
+
+        } catch (Exception e) { // todo: tratar a exceção corretamente
+            throw new RuntimeException(e);
+
+        }
     }
 }
