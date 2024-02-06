@@ -9,7 +9,8 @@ public class Main {
         System.out.println("Hello world!");
         ProductRepository productOperation = new ProductRepository();
         Product productD = new Product("product D", "New cat toy trinket", 99.00);
-
+        
+        // productOperation.updateById(3, productD);
         // productOperation.save(productD);
         
         // System.out.println(productOperation.findAll());

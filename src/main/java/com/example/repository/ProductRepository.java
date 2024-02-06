@@ -3,6 +3,7 @@ package com.example.repository;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
+
 public class ProductRepository extends Repository {
     // todo: fazer um metodo findAll
 
@@ -74,6 +75,7 @@ public class ProductRepository extends Repository {
             statement.setDouble(2, product.getValue());
             statement.setString(3, product.getDescription());
             statement.executeUpdate();
+            
         } catch (Exception e) { // todo: tratar a exceção corretamente
             throw new RuntimeException(e);
 
@@ -84,12 +86,30 @@ public class ProductRepository extends Repository {
     public void deleteById(final int id) {
         try {
             final Connection connection = getConnection();
-            final String sql = "DELETE FROM product WHERE id = ?"; // joao sem acento não pega no ilike
+            final String sql = "DELETE FROM product WHERE id = ?";
             final PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setInt(1, id);
             statement.executeUpdate();
-          
+
+        } catch (Exception e) { // todo: tratar a exceção corretamente
+            throw new RuntimeException(e);
+
+        }
+    }
+
+    public void updateById(final int id, Product product) {
+        try {
+            final Connection connection = getConnection();
+            final String sql = "UPDATE product SET name = ?, value = ?, description = ? WHERE id = ?";
+            final PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, product.getName());
+            statement.setDouble(2, product.getValue());
+            statement.setString(3, product.getDescription());
+            statement.setInt(4, id);
+            statement.executeUpdate();
+            
 
         } catch (Exception e) { // todo: tratar a exceção corretamente
             throw new RuntimeException(e);
