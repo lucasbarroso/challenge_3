@@ -1,4 +1,4 @@
-package com.example.repository;
+package com.example.entities;
 
 public class Product { //classe só para testar o crude, apagar após os testes
 

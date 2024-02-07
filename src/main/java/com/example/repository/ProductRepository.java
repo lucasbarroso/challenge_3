@@ -2,6 +2,9 @@ package com.example.repository;
 
 import java.sql.*;
 import java.util.List;
+
+import com.example.entities.Product;
+
 import java.util.ArrayList;
 
 public class ProductRepository extends Repository {
