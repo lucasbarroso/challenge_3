@@ -49,6 +49,11 @@ public class Product { //classe só para testar o crude, apagar após os testes
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", description=" + description + ", value=" + value + "]";
+        return "\n{\n\n"
+        + "\"id\": " + id + ",\n\n"
+        + "\"name\": " + name + ",\n\n"
+        + "\"description\": " + description + ",\n\n"
+        + "\" value\": " + String.format("%.2f", description) + ",\n\n"
+        + "},\n";
     }
 }

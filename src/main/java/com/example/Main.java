@@ -1,7 +1,6 @@
 package com.example;
 
 import com.example.entities.Product;
-import com.example.repository.ProductRepository;
 import com.example.service.ProductService;
 
 
