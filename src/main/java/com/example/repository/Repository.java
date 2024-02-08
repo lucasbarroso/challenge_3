@@ -8,7 +8,6 @@ public abstract class Repository {
     private static final String USERNAME = "";
     private static final String PASSWORD = "";
     private static Connection con;
-    
 
     public Connection getConnection() {
         try {
