@@ -22,11 +22,11 @@ public class ProductService {
                 throw new ValidationErrorException("\n{\n\n"
                         + " \"code\": 400,\n\n"
                         + " \"status\": \"Bad Request\",\n\n"
-                        + " \"messege\": \"O campo 'nome' e obrigatorio\",\n\n"
+                        + " \"messege\": \"O campo 'id' é inválido\",\n\n"
                         + " \"details\": [\n\n"
                         + "  {\n\n"
                         + "     \"field\": \"nome\",\n\n"
-                        + "     \"message\": \"O campo 'nome' e obrigatorio\",\n\n"
+                        + "     \"message\": \"O campo 'id' é inválido\",\n\n"
                         + "  }\n\n"
                         + " ]\n\n"
                         + "}");
@@ -47,11 +47,11 @@ public class ProductService {
                 throw new ValidationErrorException("\n{\n\n"
                         + " \"code\": 400,\n\n"
                         + " \"status\": \"Bad Request\",\n\n"
-                        + " \"messege\": \"O campo 'nome' e obrigatorio\",\n\n"
+                        + " \"messege\": \"O campo 'id' é invalido\",\n\n"
                         + " \"details\": [\n\n"
                         + "  {\n\n"
                         + "     \"field\": \"nome\",\n\n"
-                        + "     \"message\": \"O campo 'nome' e obrigatorio\",\n\n"
+                        + "     \"message\": \"O campo 'id' é invalido\",\n\n"
                         + "  }\n\n"
                         + " ]\n\n"
                         + "}");
@@ -65,6 +65,7 @@ public class ProductService {
     public void saveObject(Product product) throws RuntimeException {
 
         if (product.getName() == null) {
+
             throw new ValidationErrorException("\n{\n\n"
                     + " \"code\": 400,\n\n"
                     + " \"status\": \"Bad Request\",\n\n"
@@ -78,6 +79,83 @@ public class ProductService {
                     + "}");
         } else {
 
+            List<Product> products = repository.findAll();
+            for (Product productAux : products) {
+
+                if (productAux.getName().equals(product.getName())) {
+
+                    throw new ValidationErrorException("\n{\n\n"
+                            + " \"code\": 400,\n\n"
+                            + " \"status\": \"Bad Request\",\n\n"
+                            + " \"messege\": \"O valor no campo 'nome' ja existe\",\n\n"
+                            + " \"details\": [\n\n"
+                            + "  {\n\n"
+                            + "     \"field\": \"nome\",\n\n"
+                            + "     \"message\": \"O valor no campo 'nome' ja existe\",\n\n"
+                            + "  }\n\n"
+                            + " ]\n\n"
+                            + "}");
+                }
+
+            }
+            repository.save(product);
+        }
+    }
+
+    public void deleteObjectById(int id) throws ValidationErrorException {
+
+        if (id < 1) {
+
+            throw new ValidationErrorException("\n{\n\n"
+                    + " \"code\": 400,\n\n"
+                    + " \"status\": \"Bad Request\",\n\n"
+                    + " \"messege\": \"O valor do campo 'id'é inválido\",\n\n"
+                    + " \"details\": [\n\n"
+                    + "  {\n\n"
+                    + "     \"field\": \"nome\",\n\n"
+                    + "     \"message\": \"O valor do campo 'id'é inválido\",\n\n"
+                    + "  }\n\n"
+                    + " ]\n\n"
+                    + "}");
+
+        } else {
+            repository.deleteById(id);
+
+        }
+
+    }
+
+    public void updateObjectById(int id, Product product) {
+
+        if (id < 1) {
+
+            throw new ValidationErrorException("\n{\n\n"
+                    + " \"code\": 400,\n\n"
+                    + " \"status\": \"Bad Request\",\n\n"
+                    + " \"messege\": \"O valor do campo 'id'é inválido\",\n\n"
+                    + " \"details\": [\n\n"
+                    + "  {\n\n"
+                    + "     \"field\": \"nome\",\n\n"
+                    + "     \"message\": \"O valor do campo 'id'é inválido\",\n\n"
+                    + "  }\n\n"
+                    + " ]\n\n"
+                    + "}");
+
+        } else if (product.getName() == null) {
+
+            throw new ValidationErrorException("\n{\n\n"
+                    + " \"code\": 400,\n\n"
+                    + " \"status\": \"Bad Request\",\n\n"
+                    + " \"messege\": \"O campo 'nome' e obrigatorio\",\n\n"
+                    + " \"details\": [\n\n"
+                    + "  {\n\n"
+                    + "     \"field\": \"nome\",\n\n"
+                    + "     \"message\": \"O campo 'nome' e obrigatorio\",\n\n"
+                    + "  }\n\n"
+                    + " ]\n\n"
+                    + "}");
+
+        } else {
             List<Product> products = repository.findAll();
             for (Product productAux : products) {
 
@@ -96,30 +174,9 @@ public class ProductService {
                 }
 
             }
-            repository.save(product);
-        }
-    }
-    public void deleteObjectById(int id){
-        if (id < 1){
-            throw new ValidationErrorException("\n{\n\n"
-                            + " \"code\": 400,\n\n"
-                            + " \"status\": \"Bad Request\",\n\n"
-                            + " \"messege\": \"O valor do campo 'id'é inválido\",\n\n"
-                            + " \"details\": [\n\n"
-                            + "  {\n\n"
-                            + "     \"field\": \"nome\",\n\n"
-                            + "     \"message\": \"O valor do campo 'id'é inválido\",\n\n"
-                            + "  }\n\n"
-                            + " ]\n\n"
-                            + "}");
+            repository.updateById(id, product);
 
         }
-        else{
-            repository.deleteById(id);
-
-        }
-
-
 
     }
 

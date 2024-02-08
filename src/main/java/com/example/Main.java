@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws ValidationErrorException {
         System.out.println("Hello world!");
         ProductService productOperation = new ProductService();
-        Product productD = new Product("product D", "New cat toy trinket", 99.00);
+        Product productD = new Product("produto x", "New cat toy trinket", 99.00);
 
         // productOperation.saveObject(productD);
         System.out.println("ok");
@@ -20,7 +20,7 @@ public class Main {
         
         // System.out.println(productOperation.findAllObjects());
 
-        productOperation.deleteObjectById(812);
+        productOperation.updateObjectById(1, productD);
         //System.out.println(productOperation.findAllObjects());
     }
 }
