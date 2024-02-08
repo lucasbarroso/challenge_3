@@ -6,11 +6,13 @@ import java.util.List;
 import com.example.entities.Product;
 import com.example.exception.ValidationErrorException;
 import com.example.repository.ProductRepository;
+import com.google.gson.Gson;
 
 public class ProductService {
     private ProductRepository repository = new ProductRepository();
+    Gson gson = new Gson();
 
-    public List<Product> findAllObjects() {
+    public String findAllObjects() {
         List<Product> products = repository.findAll();
 
         for (Product product : products) {
@@ -32,11 +34,10 @@ public class ProductService {
             }
         }
 
-        return products;
+        return gson.toJson(products);
     }
 
-
-    public List<Product> findObjectById(int id){
+    public String findObjectById(int id) {
         List<Product> products = repository.findById(id);
 
         for (Product product : products) {
@@ -58,13 +59,8 @@ public class ProductService {
             }
         }
 
-        return products;
+        return gson.toJson(products);
     }
-
-    
-
-
-
 
     public void saveObject(Product product) throws RuntimeException {
 

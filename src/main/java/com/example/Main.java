@@ -18,7 +18,7 @@ public class Main {
 
         // productOperation.save(productD);
         
-        System.out.println(productOperation.findObjectById(808));
+        System.out.println(productOperation.findAllObjects());
 
         // productOperation.deleteById(4);
         //System.out.println(productOperation.findAllObjects());
