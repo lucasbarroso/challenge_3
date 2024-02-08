@@ -99,5 +99,28 @@ public class ProductService {
             repository.save(product);
         }
     }
+    public void deleteObjectById(int id){
+        if (id < 1){
+            throw new ValidationErrorException("\n{\n\n"
+                            + " \"code\": 400,\n\n"
+                            + " \"status\": \"Bad Request\",\n\n"
+                            + " \"messege\": \"O valor do campo 'id'é inválido\",\n\n"
+                            + " \"details\": [\n\n"
+                            + "  {\n\n"
+                            + "     \"field\": \"nome\",\n\n"
+                            + "     \"message\": \"O valor do campo 'id'é inválido\",\n\n"
+                            + "  }\n\n"
+                            + " ]\n\n"
+                            + "}");
+
+        }
+        else{
+            repository.deleteById(id);
+
+        }
+
+
+
+    }
 
 }
