@@ -47,15 +47,7 @@ public class Product { //classe só para testar o crude, apagar após os testes
         this.value = value;
     }
 
-    @Override
-    public String toString() {
-        return "\n{\n\n"
-        + "\"id\": " + id + ",\n\n"
-        + "\"name\": " + name + ",\n\n"
-        + "\"description\": " + description + ",\n\n"
-        + "\" value\": " + String.format("%.2f", description) + ",\n\n"
-        + "},\n";
-    }
+    
 
     @Override
     public int hashCode() {
@@ -83,5 +75,10 @@ public class Product { //classe só para testar o crude, apagar após os testes
         } else if (!name.equals(other.name))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", name=" + name + ", description=" + description + ", value=" + value + "]";
     }
 }
