@@ -1,2 +1,6 @@
-com\example\Main.class
 com\example\repository\Repository.class
+com\example\Main.class
+com\example\service\ProductService.class
+com\example\exception\ValidationErrorException.class
+com\example\entities\Product.class
+com\example\repository\ProductRepository.class

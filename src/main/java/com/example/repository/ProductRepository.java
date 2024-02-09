@@ -2,11 +2,19 @@ package com.example.repository;
 
 import java.sql.*;
 import java.util.List;
+
+import com.example.entities.Product;
+
 import java.util.ArrayList;
 
 public class ProductRepository extends Repository {
-    // todo: fazer um metodo findAll
+   
 
+    
+    /** 
+     * Metódo para mostrar todos os produtos do banco de dados
+     *@return Uma lista contendo todos os produtos do banco de dados.
+     */
     public List<Product> findAll() {
 
         try {
@@ -29,13 +37,18 @@ public class ProductRepository extends Repository {
             }
             return products;
 
-        } catch (Exception e) { // todo: tratar a exceção corretamente
+        } catch (Exception e) { 
             throw new RuntimeException(e);
         }
 
     }
 
-    // Método de busca por id: **DUVIDA: findById ou findByName?
+   
+    /**
+     * Método para achar um produto diretamente pelo seu Id, retorna uma lista de Objetos Product.
+     * @param id O ID do produto a ser pesquisado.
+     * @return Uma lista contendo o(s) produto(s) correspondente(s) ao ID fornecido.
+     */
     public List<Product> findById(final int id) {
 
         try {
@@ -58,13 +71,17 @@ public class ProductRepository extends Repository {
             }
             return products;
 
-        } catch (Exception e) { // todo: tratar a exceção corretamente
+        } catch (Exception e) { 
             throw new RuntimeException(e);
         }
 
     }
 
-    // Salva um novo produto no banco de dados
+    
+    /**
+     * Método para criar/salvar um produto no banco de dados no qual precisa receber um objeto do tipo Product.
+     * @param product O produto a ser salvo no banco de dados.
+     */
     public void save(Product product) {
         try {
             final Connection connection = getConnection();
@@ -76,13 +93,17 @@ public class ProductRepository extends Repository {
             statement.setString(3, product.getDescription());
             statement.executeUpdate();
             
-        } catch (Exception e) { // todo: tratar a exceção corretamente
+        } catch (Exception e) { 
             throw new RuntimeException(e);
 
         }
 
     }
 
+    /**
+     * Método para deletar utilizando somente o Id do objeto Product.
+     *  @param id O ID do produto a ser excluído.
+     */
     public void deleteById(final int id) {
         try {
             final Connection connection = getConnection();
@@ -92,12 +113,17 @@ public class ProductRepository extends Repository {
             statement.setInt(1, id);
             statement.executeUpdate();
 
-        } catch (Exception e) { // todo: tratar a exceção corretamente
+        } catch (Exception e) { 
             throw new RuntimeException(e);
 
         }
     }
 
+    /**
+     * Atualiza um objeto selecionando o Id do objeto alvo, logo em seguida os dados atualizados que o usuário deseja sobescrever
+     * @param id O ID do produto a ser atualizado.
+     * @param product O novo objeto Product contendo os dados atualizados do produto.
+     */
     public void updateById(final int id, Product product) {
         try {
             final Connection connection = getConnection();
@@ -111,7 +137,7 @@ public class ProductRepository extends Repository {
             statement.executeUpdate();
             
 
-        } catch (Exception e) { // todo: tratar a exceção corretamente
+        } catch (Exception e) { 
             throw new RuntimeException(e);
 
         }

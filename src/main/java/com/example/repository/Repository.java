@@ -2,6 +2,10 @@ package com.example.repository;
 
 import java.sql.*;
 
+/**
+ * Repositório para manipulação de produtos no banco de dados.
+ */
+
 public abstract class Repository {
     private static String host ="";
     private static final String URL = "jdbc:postgresql://"+ host+ ":5432/postgres"; 
@@ -9,7 +13,10 @@ public abstract class Repository {
     private static final String PASSWORD = "";
     private static Connection con;
     
-
+    /** 
+     * Método para obter conexão com o banco de dados.
+     * @return Connection
+     */
     public Connection getConnection() {
         try {
 
@@ -20,7 +27,7 @@ public abstract class Repository {
 
             return con;
 
-        } catch (Exception e) { // todo: falta tratar esta e outras exceções.
+        } catch (Exception e) { 
             throw new RuntimeException(e);
         }
     }
