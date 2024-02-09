@@ -2,9 +2,8 @@ package com.example.entities;
 
 /**
  * Classe para objetos do tipo Product, onde serão contidos os valores,Gets e
- * Setters, .
+ * Setters, Hashcode, Equals e toString.
  * 
- * @author Lucas Barroso
  */
 public class Product {
 
@@ -109,7 +108,7 @@ public class Product {
      * 
      * @return Uma representação em string do produto.
      */
-    
+
     @Override
     public String toString() {
         return "\n{\n\n"
