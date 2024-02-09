@@ -5,7 +5,12 @@ import java.sql.SQLException;
 import com.example.entities.Product;
 import com.example.exception.ValidationErrorException;
 import com.example.service.ProductService;
-
+/**
+ * Classe principal que contém o método main para execução do programa.
+ *
+ * @author Lucas Barroso, Bruno Póvoa
+ *  
+ */
 
 public class Main {
     public static void main(String[] args) throws ValidationErrorException {

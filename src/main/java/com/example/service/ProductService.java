@@ -8,16 +8,27 @@ import com.example.exception.ValidationErrorException;
 import com.example.repository.ProductRepository;
 import com.google.gson.Gson;
 
+
+/**
+ * Serviço para aplicar as regras de negócio ao utilizar as operações do crud solicitado.
+ */
+
 public class ProductService {
     private ProductRepository repository = new ProductRepository();
     Gson gson = new Gson();
+
+    /**
+     * Repassa os objetos do método findAll e válida se os ids que estão no banco de dados são válidos.
+     * 
+     * @return Uma representação JSON de todos os produtos.
+     */
 
     public String findAllObjects() {
         List<Product> products = repository.findAll();
 
         for (Product product : products) {
 
-            if (product.getId() < 0) {
+            if (product.getId() < 1) {
 
                 throw new ValidationErrorException("\n{\n\n"
                         + " \"code\": 400,\n\n"
@@ -37,12 +48,19 @@ public class ProductService {
         return gson.toJson(products);
     }
 
+    /**
+     * Repassa os objetos do método findById e válida se os ids que estão no banco de dados são válidos.
+     * 
+     * @param id O ID do produto a ser buscado.
+     * @return Uma representação JSON do produto correspondente ao ID fornecido.
+     */
+
     public String findObjectById(int id) {
         List<Product> products = repository.findById(id);
 
         for (Product product : products) {
 
-            if (product.getId() < 0) {
+            if (product.getId() < 1) {
 
                 throw new ValidationErrorException("\n{\n\n"
                         + " \"code\": 400,\n\n"
@@ -61,6 +79,13 @@ public class ProductService {
 
         return gson.toJson(products);
     }
+
+   /**
+     * Repassa o método save para válidar os nomes e garantir que eles não sejam iguais.
+     * 
+     * @param product O produto a ser salvo.
+     * @throws ValidationErrorException Se ocorrer um erro de validação.
+     */
 
     public void saveObject(Product product) throws RuntimeException {
 
@@ -101,6 +126,12 @@ public class ProductService {
             repository.save(product);
         }
     }
+    /**
+     * Repassa o método deleteById e aplica as validações necessárias para os paramêtro Id.
+     * 
+     * @param id O ID do produto a ser excluído.
+     * @throws ValidationErrorException Se ocorrer um erro de validação.
+     */
 
     public void deleteObjectById(int id) throws ValidationErrorException {
 
@@ -124,6 +155,14 @@ public class ProductService {
         }
 
     }
+
+    /**
+     * Repassa o método updateById e aplica as validações necessárias para os paramêtros id e nome.
+     * 
+     * @param id O ID do produto a ser atualizado.
+     * @param product O novo objeto Product contendo os dados atualizados do produto.
+     * @throws ValidationErrorException Se ocorrer um erro de validação.
+     */
 
     public void updateObjectById(int id, Product product) {
 
