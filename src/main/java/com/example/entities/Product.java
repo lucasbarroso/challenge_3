@@ -1,6 +1,12 @@
 package com.example.entities;
 
-public class Product { //classe só para testar o crude, apagar após os testes
+/**
+ * Classe para objetos do tipo Product, onde serão contidos os valores,Gets e
+ * Setters, .
+ * 
+ * @author Lucas Barroso
+ */
+public class Product {
 
     private int id;
     private String name;
@@ -9,6 +15,15 @@ public class Product { //classe só para testar o crude, apagar após os testes
 
     public Product() {
     }
+
+    /**
+     * Construtor da classe Project sem o Id, pois o PostgreSQL será responsável
+     * pelo auto-incremento do atributo id.
+     * 
+     * @param name        O nome do produto.
+     * @param description A descrição do produto.
+     * @param value       O valor do produto.
+     */
 
     public Product(String name, String description, double value) {
         this.name = name;
@@ -19,11 +34,12 @@ public class Product { //classe só para testar o crude, apagar após os testes
     public int getId() {
         return id;
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
-    
-   public String getName() {
+
+    public String getName() {
         return name;
     }
 
@@ -47,7 +63,11 @@ public class Product { //classe só para testar o crude, apagar após os testes
         this.value = value;
     }
 
-    
+    /**
+     * Calcula o código de hash do produto.
+     * 
+     * @return O código de hash do produto.
+     */
 
     @Override
     public int hashCode() {
@@ -57,6 +77,13 @@ public class Product { //classe só para testar o crude, apagar após os testes
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
+
+    /**
+     * Verifica se outro objeto é igual a este produto.
+     * 
+     * @param obj O objeto a ser comparado.
+     * @return true se os objetos forem iguais, false caso contrário.
+     */
 
     @Override
     public boolean equals(Object obj) {
@@ -77,13 +104,19 @@ public class Product { //classe só para testar o crude, apagar após os testes
         return true;
     }
 
+    /**
+     * Retorna uma representação em string do produto.
+     * 
+     * @return Uma representação em string do produto.
+     */
+    
     @Override
     public String toString() {
         return "\n{\n\n"
-        + "\"id\": " + id + ",\n\n"
-        + "\"name\": " + name + ",\n\n"
-        + "\"description\": " + description + ",\n\n"
-        + "\" value\": " + String.format("%.2f", description) + ",\n\n"
-        + "},\n";
+                + "\"id\": " + id + ",\n\n"
+                + "\"name\": " + name + ",\n\n"
+                + "\"description\": " + description + ",\n\n"
+                + "\" value\": " + String.format("%.2f", description) + ",\n\n"
+                + "},\n";
     }
 }
