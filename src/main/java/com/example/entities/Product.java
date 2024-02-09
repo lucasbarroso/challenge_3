@@ -115,7 +115,7 @@ public class Product {
                 + "\"id\": " + id + ",\n\n"
                 + "\"name\": " + name + ",\n\n"
                 + "\"description\": " + description + ",\n\n"
-                + "\" value\": " + String.format("%.2f", description) + ",\n\n"
+                + "\" value\": " + String.format("%.2f", value) + ",\n\n"
                 + "},\n";
     }
 }
